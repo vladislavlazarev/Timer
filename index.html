@@ -6,46 +6,44 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"> </script>
 </head>
 <body>
-<div id="3232"></div>
-
-<script>
-
-
-
-
-    var deadline = 'April 7 2019 17:00:00 GMT+02:00';
-    function getTimeRemaining(endtime){
-        var t = Date.parse(endtime) - Date.parse(new Date());
-        var seconds = Math.floor( (t/1000) % 60 );
-        var minutes = Math.floor( (t/1000/60) % 60 );
-        var hours = Math.floor( (t/(1000*60*60)) % 24 );
-        var days = Math.floor( t/(1000*60*60*24) );
-        return {
-            'total': t,
-            'days': days,
-            'hours': hours,
-            'minutes': minutes,
-            'seconds': seconds
-        };
+<h1>Обратный отсчет</h1>
+<div id="3232" class="block"></div>
+<style>
+    @font-face {
+        font-family: "Formular-Medium";
+        src: url("./Formular-Medium.otf");
     }
-
-    function initializeClock(id, endtime){
-        var clock = document.getElementById(id);
-        var timeinterval = setInterval(function(){
-            var t = getTimeRemaining(endtime);
-            clock.innerHTML = 'days: ' + t.days + '<br>' +
-                'hours: '+ t.hours + '<br>' +
-                'minutes: ' + t.minutes + '<br>' +
-                'seconds: ' + t.seconds;
-            if(t.total<=0){
-                clearInterval(timeinterval);
-            }
-        },1000);
+    .block{
+        font-size: 126px;
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        font-family: "Formular-Medium";
+        font-weight: 900;
     }
+    h1 {
+        font-size: 86px;
+        position: absolute;
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%,-50%);
+        font-family: "Formular-Medium";
+        color:#29e4ff;
+        font-weight: 700;
+    }
+    .-hour {
+        top: 55%;
+        font-size: 156px;
+    }
+    .-minute{
+        font-size: 176px;
+    }
+</style>
 
-    initializeClock('3232', deadline);
-</script>
+<script src="javascriptfile.js"></script>
 </body>
 </html>
