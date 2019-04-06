@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="3232"></div>
+
+<script>
+
+
+
+
+    var deadline = 'April 7 2019 17:00:00 GMT+02:00';
+    function getTimeRemaining(endtime){
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor( (t/1000) % 60 );
+        var minutes = Math.floor( (t/1000/60) % 60 );
+        var hours = Math.floor( (t/(1000*60*60)) % 24 );
+        var days = Math.floor( t/(1000*60*60*24) );
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClock(id, endtime){
+        var clock = document.getElementById(id);
+        var timeinterval = setInterval(function(){
+            var t = getTimeRemaining(endtime);
+            clock.innerHTML = 'days: ' + t.days + '<br>' +
+                'hours: '+ t.hours + '<br>' +
+                'minutes: ' + t.minutes + '<br>' +
+                'seconds: ' + t.seconds;
+            if(t.total<=0){
+                clearInterval(timeinterval);
+            }
+        },1000);
+    }
+
+    initializeClock('3232', deadline);
+</script>
+</body>
+</html>
